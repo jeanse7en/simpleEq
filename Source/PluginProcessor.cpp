@@ -94,9 +94,9 @@ void SimpleEqAudioProcessor::changeProgramName (int index, const juce::String& n
 void SimpleEqAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
     juce::dsp::ProcessSpec spec;
+    spec.maximumBlockSize = samplesPerBlock;
     spec.numChannels = 1;
     spec.sampleRate = sampleRate;
-    spec.maximumBlockSize = samplesPerBlock;
      
     leftChain.prepare(spec);
     rightChain.prepare(spec);
